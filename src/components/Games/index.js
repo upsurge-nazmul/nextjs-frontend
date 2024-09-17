@@ -14,6 +14,7 @@ import ChosePremiumPopUp from "../ChosePremiumPopUp";
 import GameList from "./GameList";
 import AvailableGames from "../DownloadGames/AvailableGames";
 import DashboardGames from "../Dashboard/Games";
+import GameViewHTML from "./GameViewHTML";
 
 function Games({
   userdatafromserver = null,
@@ -33,7 +34,9 @@ function Games({
     type: "success",
     msg: "",
   });
-  const [openGame, setOpenGame] = useState("");
+  const [openWebglGame, setOpenWebglGame] = useState("");
+  const [openHTMLGame, setOpenHTMLGame] = useState("");
+
   useEffect(() => {
     setuserdata(userdatafromserver);
   }, []);
@@ -102,8 +105,8 @@ function Games({
   //       setrecent_games([title]);
   //       updaterecentgames([title]);
   //     }
-  //     setOpenGame(pushto ? pushto : title);
-  //     // setOpenGame(webgl_key);
+  //     setOpenWebglGame(pushto ? pushto : title);
+  //     // setOpenWebglGame(webgl_key);
   //   } else {
   //     setShowSubToPremium(true);
   //   }
@@ -111,12 +114,16 @@ function Games({
 
   async function handlegameclick(game) {
     if (userdata.premium_plan >= game.premium_plan) {
-      setOpenGame(game.id);
       setGameUnicoinRewards((prev) => {
         const uniqueItems = new Set(prev);
         uniqueItems.add(game.id);
         return Array.from(uniqueItems);
       });
+      if (!game.webgl_key) {
+        setOpenHTMLGame(game);
+      } else {
+        setOpenWebglGame(game.id);
+      }
     } else {
       setShowSubToPremium(true);
     }
@@ -169,12 +176,22 @@ function Games({
           <AvailableGames />
         </div>
       </div>
-      {openGame ? (
-        <GameView allGames={allGames} game={openGame} setGame={setOpenGame} />
+      {openWebglGame ? (
+        <GameView
+          allGames={allGames}
+          game={openWebglGame}
+          setGame={setOpenWebglGame}
+        />
+      ) : openHTMLGame ? (
+        <GameViewHTML
+          game={openHTMLGame}
+          setGame={setOpenHTMLGame}
+          handleDone={setOpenHTMLGame}
+        />
       ) : (
         ""
       )}
-      {/* {openGame ? <WebglView gameKey={openGame} setView={setOpenGame} /> : ""} */}
+      {/* {openWebglGame ? <WebglView gameKey={openWebglGame} setView={setOpenWebglGame} /> : ""} */}
     </div>
   );
 }
