@@ -2,26 +2,21 @@ import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
 import { useState, useEffect } from "react";
 import PaymentsApi from "../../actions/apis/PaymentsApi";
+import LoginApis from "../../actions/apis/LoginApis";
 
-export default function PhonepePage() {
-  const [plan, setPlan] = useState();
+export default function PhonepePage({ userToken }) {
+  // page should not work without logged in user
+  // so pass token either in url or from browser storage
   const router = useRouter();
   const { plan_id, token = "" } = router.query;
 
-  async function fetchPlan() {
-    const res = await PaymentsApi.getPlans({ plan_id });
-    if (res && res.data && res.data.success) {
-      setPlan(res.data.data);
-    }
-  }
-
-  async function paymentInit() {
+  async function paymentInit(verification) {
     const result = await PaymentsApi.getPhonePe(
       {
         plan_id,
         hostURL: window.location.origin,
       },
-      token
+      verification
     );
     console.log("phonepe result: ", result);
     if (!result) {
@@ -37,17 +32,19 @@ export default function PhonepePage() {
   }
 
   useEffect(() => {
-    fetchPlan();
-    paymentInit();
-    window.addEventListener("beforeunload", () => {
-      return "Reload Disable";
-    });
-    return () => {
-      window.removeEventListener("beforeunload", () => {
+    const verification = token || userToken;
+    if (verification) {
+      paymentInit(verification);
+      window.addEventListener("beforeunload", () => {
         return "Reload Disable";
       });
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("beforeunload", () => {
+          return "Reload Disable";
+        });
+      };
+    }
+  }, [token, userToken]);
 
   return (
     <div
@@ -63,4 +60,40 @@ export default function PhonepePage() {
       <CircularProgress size={100} />
     </div>
   );
+}
+
+export async function getServerSideProps({ params, query, req }) {
+  let token = query.token || req.cookies.accesstoken;
+  let msg = "";
+  if (token) {
+    let response = await LoginApis.checktoken({
+      token: token,
+    });
+    if (response && !response.data.success) {
+      msg = response.data.msg;
+      return {
+        props: { isLogged: false, msg },
+        redirect: {
+          permanent: false,
+          destination: "/?err=02",
+        },
+      };
+    } else {
+      return {
+        props: {
+          isLogged: true,
+          userdatafromserver: response.data.data,
+          userToken: token,
+        },
+      };
+    }
+  } else {
+    return {
+      props: { isLogged: false, msg: "cannot get token" },
+      redirect: {
+        permanent: false,
+        destination: "/?err=01",
+      },
+    };
+  }
 }

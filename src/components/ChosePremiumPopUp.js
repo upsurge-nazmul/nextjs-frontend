@@ -4,11 +4,7 @@ import styles from "../styles/GeneralComponents/chosePremium.module.scss";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentsApi from "../actions/apis/PaymentsApi";
 import { CircularProgress } from "@mui/material";
-
-const METHODS = [
-  { name: "PhonePe", id: "phonepe", key: "phonypay" },
-  { name: "Stripe", id: "stripe", key: "stripy" },
-];
+import Plans from "./Plans";
 
 function ChosePremiumPopUp({
   setChoseToPremium = () => {},
@@ -18,10 +14,9 @@ function ChosePremiumPopUp({
   const router = useRouter();
   const [plans, setPlans] = useState();
   const [loading, setLoading] = useState(true);
-  const [method, setMethod] = useState(METHODS[0].id);
 
   async function fetchPlans() {
-    const res = await PaymentsApi.getPlans();
+    const res = await PaymentsApi.getPlans({ scheme: process.env.NODE_ENV });
     if (res && res.data && res.data.success) {
       setPlans(res.data.data);
       setLoading(false);
@@ -95,174 +90,7 @@ function ChosePremiumPopUp({
           </div>
         </div>
 
-        <div className={styles.section}>
-          {plans &&
-            plans.length &&
-            plans.map((plan, i) => {
-              return (
-                <React.Fragment key={plan.id}>
-                  <div className={styles.sectionLeft}>
-                    <div
-                      className={
-                        plan.id === 1001
-                          ? styles.bestValue
-                          : styles.bestValueHidden
-                      }
-                    >
-                      Best Value
-                    </div>
-                    <div className={styles.pricing}>
-                      <div className={styles.bottom}>
-                        <h3 className={styles.header}>{plan?.name}</h3>
-                      </div>
-                      <div className={styles.pricingSectionTop}>
-                        <p className={styles.slashedPrice}>
-                          ₹{plan.slashPrice}
-                        </p>{" "}
-                        <p className={styles.actualPrice}>
-                          ₹{plan.amount}&nbsp;
-                        </p>{" "}
-                      </div>
-                      <div className={styles.pricingSectionBottom}>
-                        <p className={styles.smallfont}>
-                          (limited period offer)
-                        </p>
-                      </div>
-                    </div>
-
-                    <div
-                      className={styles.button}
-                      onClick={() => {
-                        router.push(
-                          `/payments/${method}?plan_id=${plan.id}${
-                            token ? `&token=${token}` : ""
-                          }`
-                        );
-                      }}
-                    >
-                      {`Subscribe to Premium`}
-                    </div>
-                  </div>
-                  {i < plans.length - 1 && (
-                    <div className={styles.verticleLine}></div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-
-          {/* <div className={styles.sectionLeft}>
-            <div className={styles.bestValue}>&nbsp;</div>
-            <div className={styles.pricing}>
-              <div className={styles.bottom}>
-                <h3 className={styles.header}>{plans[2]?.name}</h3>
-              </div>
-              <div className={styles.pricingSectionTop}>
-                <p className={styles.slashedPrice}>₹{plans[2].slashPrice}</p>{" "}
-                <p className={styles.actualPrice}>₹{plans[2].amount}&nbsp;</p>{" "}
-              </div>
-              <div className={styles.pricingSectionBottom}>
-                <p className={styles.smallfont}>(limited period offer)</p>
-              </div>
-            </div>
-
-            <div
-              className={styles.button}
-              onClick={() => {
-                router.push(
-                  `/payments/${method}?plan_id=${plans[2].id}${
-                    token ? `&token=${token}` : ""
-                  }`
-                );
-              }}
-            >
-              {`Subscribe to Premium`}
-            </div>
-          </div>
-
-          <div className={styles.verticleLine}></div>
-
-          <div className={styles.sectionLeft}>
-            <div className={styles.bestValue}>&nbsp;</div>
-            <div className={styles.pricing}>
-              <div className={styles.bottom}>
-                <h3 className={styles.header}>{plans[1].name}</h3>
-              </div>
-              <div className={styles.pricingSectionTop}>
-                <p className={styles.slashedPrice}>₹{plans[1].slashPrice}</p>{" "}
-                <p className={styles.actualPrice}>₹{plans[1].amount}&nbsp;</p>{" "}
-              </div>
-              <div className={styles.pricingSectionBottom}>
-                <p className={styles.smallfont}>(limited period offer)</p>
-              </div>
-            </div>
-
-            <div
-              className={styles.button}
-              onClick={() => {
-                router.push(
-                  `/payments/${method}?plan_id=${plans[1].id}${
-                    token ? `&token=${token}` : ""
-                  }`
-                );
-              }}
-            >
-              {`Subscribe to Premium`}
-            </div>
-          </div>
-
-          <div className={styles.verticleLine}></div>
-
-          <div className={styles.sectionRight}>
-            <div className={styles.bestValue}>Best Value</div>
-
-            <div className={styles.pricing}>
-              <div className={styles.bottom}>
-                <h3 className={styles.header}>{plans[0].name}</h3>
-              </div>
-              <div className={styles.pricingSectionTop}>
-                <p className={styles.slashedPrice}>₹{plans[0].slashPrice}</p>
-                <p className={styles.actualPriceGolden}>
-                  ₹{plans[0].amount}&nbsp;
-                </p>
-              </div>
-              <div className={styles.pricingSectionBottom}>
-                <p className={styles.smallfont}>(limited period offer)</p>
-              </div>
-            </div>
-            <div
-              className={styles.button}
-              onClick={() => {
-                router.push(
-                  `/payments/${method}?plan_id=${plans[0].id}${
-                    token ? `&token=${token}` : ""
-                  }`
-                );
-              }}
-            >
-              {`Subscribe to Premium`}
-            </div>
-          </div> */}
-        </div>
-
-        {/* <div>Prefered payment method</div>
-        <div className={styles.inputContainer}>
-          {METHODS.map((m) => {
-            return (
-              <>
-                <input
-                  type="checkbox"
-                  id={m.id}
-                  name={m.name}
-                  key={m.key}
-                  value={m.id}
-                  onChange={(e) => setMethod(e.target.value)}
-                  checked={m.id === method}
-                />
-                <label htmlFor={m.name}> {m.name}</label>
-              </>
-            );
-          })}
-        </div> */}
+        <Plans />
 
         <p
           className={styles.clickable}

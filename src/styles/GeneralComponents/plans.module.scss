@@ -1,0 +1,144 @@
+.pricingComponent {
+  width: 100%;
+  padding: 2rem;
+
+  .section {
+    width: 100%;
+    display: flex;
+    padding: 1rem 1rem 1rem 0;
+    font-size: 1rem;
+
+    .item {
+      flex: 1;
+      display: flex;
+
+      .sectionLeft {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .bestValue {
+          width: max-content;
+          padding: 0.1rem 0.8rem;
+          font-size: 0.8rem;
+          color: #eac356;
+          background: #efeceb;
+          font-weight: 700;
+          border-radius: 1rem;
+          box-shadow: 0 0.3rem 0.5rem rgb(158, 158, 158);
+        }
+
+        .bestValueHidden {
+          opacity: 0;
+        }
+
+        .header {
+          margin-top: 2.5rem;
+        }
+
+        .subheading {
+          margin: 1.5rem 0 1.5rem 0;
+          font-weight: 600;
+        }
+
+        .pricing {
+          margin-top: 0.3rem;
+
+          .bottom {
+            margin-top: 3.6rem;
+
+            .pricingName {
+              text-align: center;
+            }
+          }
+
+          .pricingSectionTop {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            color: #6d6c6d;
+
+            .slashedPrice {
+              position: relative;
+              font-size: 1.3rem;
+
+              &.slashedPrice::before {
+                position: absolute;
+                content: "";
+                right: 0;
+                left: 0;
+                top: 50%;
+                width: 120%;
+                border-top: 2px solid;
+                border-color: red;
+                transform: rotate(-15deg);
+              }
+            }
+
+            .actualPrice {
+              font-size: 1.6rem;
+              color: #426BD9;
+              font-weight: 700;
+              margin-left: 0.5rem;
+            }
+
+            .actualPriceGolden {
+              font-size: 1.6rem;
+              font-weight: 700;
+              margin-left: 0.5rem;
+              color: #eac356;
+            }
+          }
+        }
+
+        .smallfont {
+          text-align: center;
+          margin-top: 0.2rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        .pricingSectionBottom {
+          .smallfont {
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: 500;
+          }
+        }
+
+        .button {
+          background: #4166eb;
+          border-radius: 1rem;
+          color: white;
+          width: 100%;
+          max-width: 30rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          margin-top: 0.5rem;
+          padding: 1rem;
+          border: 1px solid #4166eb;
+
+          &:hover {
+            background-color: #ffffff;
+            color: #4166eb;
+          }
+        }
+      }
+
+      .verticleLine {
+        border-left: 0.2rem solid #A09E9E;
+        height: 100%;
+        margin: 0 1rem;
+      }
+
+    }
+  }
+}

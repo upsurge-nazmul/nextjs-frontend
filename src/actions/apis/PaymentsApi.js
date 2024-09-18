@@ -61,11 +61,7 @@ const getSubscriptionDetails = (token = "") => {
 };
 
 const getPlans = (payload, token) => {
-  return ApiCalls.getResponse(
-    "payments/plans",
-    payload,
-    token || getCookie("accesstoken")
-  );
+  return ApiCalls.getResponse("payments/plans", payload, token);
 };
 
 const getPhonePe = (payload, token = "") => {
