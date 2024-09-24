@@ -8,12 +8,16 @@ import { modifiedImageURL } from "../../utils/utils";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SaveIcon from "@mui/icons-material/Save";
+import FileApis from "../../actions/apis/File";
+import Spinner from "../Spinner";
 
 export default function AvatarSelector({ setshow, tribe = null }) {
   const { userdata, setuserdata } = useContext(MainContext);
+  const [loading, setLoading] = useState(false);
   const [availableAvatars, setAvailableAvatars] = useState([]);
   const [selected, setSelected] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageFile, setSelectedImageFile] = useState(null);
 
   async function fetchAvailableAvatars() {
     const res = await DashboardApis.getallavatars(null);
@@ -40,13 +44,33 @@ export default function AvatarSelector({ setshow, tribe = null }) {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    setSelectedImageFile(file); // save image to send to backend
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSelectedImage(reader.result); // Save the image preview
+        setSelectedImage(reader.result); // Save the image to preview
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleImageSave = async () => {
+    setLoading(true);
+    const imageFile = new FormData();
+    imageFile.append("file", selectedImageFile);
+    const imgaeUploadResponse = await FileApis.uploadFile(imageFile);
+
+    if (imgaeUploadResponse?.data?.success) {
+      const imageData = imgaeUploadResponse?.data?.data;
+      let response = await DashboardApis.updatechildprofile({
+        user_img_url: imageData.url,
+      });
+      if (response && response.data && response.data.success) {
+        setuserdata((prev) => ({ ...prev, user_img_url: imageData.url }));
+      }
+    }
+    setLoading(false);
+    setshow(false);
   };
 
   useEffect(() => {
@@ -66,31 +90,60 @@ export default function AvatarSelector({ setshow, tribe = null }) {
       <div className={styles.background} onClick={() => setshow(false)} />
       <div className={styles.main}>
         <div className={styles.imageSection}>
-          <img
-            id="avatar-button"
-            src={
-              selectedImage
-                ? selectedImage
-                : userdata?.user_img_url
-                ? modifiedImageURL(userdata.user_img_url)
-                : "https://imgcdn.upsurge.in/images/default-avatar.png"
-            }
-            alt=""
-            className={styles.avatarImg}
-          />
+          <div className={styles.avatarImgWrapper}>
+            <img
+              id="avatar-button"
+              src={
+                selectedImage
+                  ? selectedImage
+                  : userdata?.user_img_url
+                  ? modifiedImageURL(userdata.user_img_url)
+                  : "https://imgcdn.upsurge.in/images/default-avatar.png"
+              }
+              alt=""
+              className={styles.avatarImg}
+            />
+            {loading && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  height: "100%",
+                  width: "100%",
+                }}
+              >
+                <Spinner additionalClass={styles.imageSpinner} />
+              </div>
+            )}
+          </div>
           <div className={styles.selectImageArea}>
             <div className={styles.uploadContainer}>
-              <label for="image-upload" className={styles.uploadLabel}>
-                Upload photo
-                <AddPhotoAlternateIcon />
+              <label htmlFor="image-upload" className={styles.uploadLabel}>
+                {loading ? (
+                  <div
+                    style={{
+                      height: "100%",
+                    }}
+                  >
+                    <Spinner />
+                  </div>
+                ) : (
+                  <>
+                    Upload photo
+                    <AddPhotoAlternateIcon />
+                  </>
+                )}
               </label>
-              <input
-                type="file"
-                id="image-upload"
-                accept="image/*"
-                className={styles.uploadInput}
-                onChange={handleImageChange}
-              />
+              {!loading && (
+                <input
+                  type="file"
+                  id="image-upload"
+                  accept="image/*"
+                  className={styles.uploadInput}
+                  onChange={handleImageChange}
+                />
+              )}
             </div>
             {selectedImage && (
               <div className={styles.selectionActionButtons}>
@@ -101,7 +154,7 @@ export default function AvatarSelector({ setshow, tribe = null }) {
                   Cancel
                   <CancelIcon />
                 </button>
-                <button className={styles.saveButton}>
+                <button className={styles.saveButton} onClick={handleImageSave}>
                   Save
                   <SaveIcon />
                 </button>
@@ -115,11 +168,11 @@ export default function AvatarSelector({ setshow, tribe = null }) {
           </p>
           <div className={styles.wrapper}>
             {availableAvatars &&
-              availableAvatars.map((item) => {
+              availableAvatars.map((item, i) => {
                 return (
                   <div
                     className={styles.avatar}
-                    key={item}
+                    key={item + i}
                     onClick={() => {
                       setAvatar(item.img_url);
                       setshow(false);
