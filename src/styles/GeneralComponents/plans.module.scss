@@ -142,3 +142,32 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .pricingComponent {
+    padding: 1rem;
+
+    .section {
+      width: 100%;
+      flex-direction: column;
+      padding: 0;
+
+      .item {
+        .sectionLeft {
+          .pricing {
+            .bottom {
+              margin-top: 1rem;
+            }
+          }
+        }
+
+        .verticleLine {
+          display: none;
+        }
+
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {}
