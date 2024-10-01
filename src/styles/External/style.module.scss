@@ -1,0 +1,49 @@
+@use "../variables/colors.scss" as *;
+
+.externalPage {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mainContent {
+    width: 90%;
+    text-align: center;
+
+    .mainText {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: gray;
+
+      .pageName {
+        color: $green;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+    }
+
+    .downloadButtonArea {
+      padding-top: 2rem;
+
+      .downloadButtonText {
+        color: $yellow;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: 0.5rem 1rem;
+      }
+
+    }
+
+    .redirectButton {
+      background-color: $green;
+      border: none;
+      color: white;
+      padding: 1rem 4rem;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+  }
+}
