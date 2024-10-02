@@ -2,11 +2,11 @@
 @use "../variables/colors.scss" as *;
 
 .faqcomponent {
-  width: 90%;
   max-width: 80%;
   min-width: 18rem;
   transition: all 0.3s ease;
   margin-bottom: 1rem;
+
   .top {
     height: 4rem;
     background: #ffffff;
@@ -17,6 +17,7 @@
     align-items: center;
     padding: 0 0.625rem;
     cursor: pointer;
+
     .icon {
       width: 4rem;
       display: flex;
@@ -25,6 +26,7 @@
       transition: all 0.3s ease;
       margin-right: 0.625rem;
     }
+
     .question {
       flex: 1;
       font-size: 1.125rem;
@@ -32,11 +34,13 @@
       font-weight: 400;
     }
   }
+
   .faqopened {
     background-color: rgba(65, 102, 235, 1);
     transition: all 0.3s ease;
     color: white;
   }
+
   .answer {
     height: 0;
     overflow: hidden;
@@ -48,6 +52,7 @@
     font-weight: 400;
     line-height: 1.75rem;
   }
+
   .showanswer {
     padding: 1.25rem 2.5rem;
     height: fit-content;
@@ -55,15 +60,21 @@
   }
 }
 
-@media only screen and (min-width: 501px) and (max-width: 990px) {
+@media only screen and (max-width: 500px) {
   .faqcomponent {
+    max-width: 90%;
+
     .top {
+      padding: 0;
+
       .icon {
         width: 2rem;
+
         svg {
           width: 0.75rem;
         }
       }
+
       .question {
         flex: 1;
         font-size: 0.875rem;
@@ -71,6 +82,33 @@
         font-weight: 400;
       }
     }
+
+    .answer {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 990px) {
+  .faqcomponent {
+
+    .top {
+      .icon {
+        width: 2rem;
+
+        svg {
+          width: 0.75rem;
+        }
+      }
+
+      .question {
+        flex: 1;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        font-weight: 400;
+      }
+    }
+
     .answer {
       font-size: 0.875rem;
     }
@@ -80,13 +118,16 @@
 @media only screen and (min-width: 991px) and (max-width: 1300px) {
   .faqcomponent {
     z-index: 99;
+
     .top {
       .icon {
         width: 2rem;
+
         svg {
           width: 0.75rem;
         }
       }
+
       .question {
         flex: 1;
         font-size: $tablet-subheading;
@@ -95,6 +136,7 @@
         font-weight: 400;
       }
     }
+
     .answer {
       font-size: $tablet-subheading;
       line-height: $tablet-subheading-line;
