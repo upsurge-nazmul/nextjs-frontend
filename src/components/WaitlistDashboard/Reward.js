@@ -8,6 +8,7 @@ import { MainContext } from "../../context/Main";
 import OtpNotVerfied from "../Auth/OtpNotVerified";
 import Modal from "../Modal";
 import RewardDetails from "./RewardDetails";
+import LockSvg from "../SVGcomponents/LockSvg";
 
 export default function Reward({
   data,
@@ -148,11 +149,6 @@ export default function Reward({
             </div>
           </div>
         </div>
-        {/*         
-        {(data.productId === 31057 ? (<div className={styles.description}>
-        Phone number registered with us should have full wallet KYC with Paytm to succesfully redeem this voucher.
-        </div>) : "")}
-         */}
         <div className={styles.actionArea}>
           <button
             className={styles.detailsButton}
@@ -165,7 +161,12 @@ export default function Reward({
             ""
           ) : (
             <button className={styles.redeemButton} onClick={redeem}>
-              Redeem
+              <div>Redeem</div>
+              {userdata?.premium_plan ? (
+                <div></div>
+              ) : (
+                <LockSvg className={styles.lockIcon} />
+              )}
             </button>
           )}
         </div>

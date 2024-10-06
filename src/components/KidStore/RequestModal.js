@@ -45,6 +45,7 @@ export default function RequestModal({
     type: "success",
     msg: "",
   });
+  const [actionDisabled, setActionDisabled] = useState(false);
 
   useEffect(() => {
     if (!showmodal) {
@@ -103,6 +104,15 @@ export default function RequestModal({
       }
     }
   }
+
+  useEffect(() => {
+    if (availableUnicoins - data.price * quantity < 0) {
+      setActionDisabled(true);
+    } else {
+      setActionDisabled(false);
+    }
+  }, []);
+
   return (
     <div className={styles.requestModal}>
       <Toast data={toastdata} />
@@ -195,8 +205,13 @@ export default function RequestModal({
                 )}
               </div>
               {!loading ? (
-                <div className={styles.button} onClick={() => buyAvatar()}>
-                  Redeem Now
+                <div
+                  className={
+                    actionDisabled ? styles.disabledButton : styles.button
+                  }
+                  onClick={actionDisabled ? () => {} : () => buyAvatar()}
+                >
+                  {actionDisabled ? "Insufficient Balance" : "Redeem Now"}
                 </div>
               ) : (
                 <div className={`${styles.button} ${styles.spinner_btn}`}>

@@ -3,169 +3,177 @@
   width: 100%;
   height: 100%;
   box-shadow:
-  3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
-  4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
-  5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
-  7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
-  9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
-  14px 21px 41px rgba(0, 0, 0, 0.07)
-;
+    3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+    4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+    5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+    7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+    9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
+    14px 21px 41px rgba(0, 0, 0, 0.07);
   border-radius: 1rem;
-  display: grid; 
-  grid-template-columns: 1fr; 
-  grid-template-rows: 2fr 1fr 1fr;  
-  grid-template-areas: 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  grid-template-areas:
     "left"
     "right"
-    "right"; 
-  justify-content: space-evenly; 
-  align-content: space-evenly; 
-  justify-items: stretch; 
-  align-items: stretch; 
-  
+    "right";
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  justify-items: stretch;
+  align-items: stretch;
+
   .showOTP {
     position: absolute !important;
     top: 0;
     left: 0;
   }
-  
-  .left{
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr; 
-    grid-template-areas: 
-      "image vname"; 
-    grid-area: left; 
+
+  .left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "image vname";
+    grid-area: left;
+
     .image {
       object-fit: cover;
-      grid-area: image; 
+      grid-area: image;
       max-width: 12rem;
       margin: 1rem;
       border-radius: 1rem;
-    }  
+    }
+
     .nameArea {
       align-items: center;
       justify-content: space-between;
       align-self: center;
-      grid-area: vname; 
+      grid-area: vname;
       margin-right: 1rem;
+
       .name {
         font-size: calc(1rem + 0.5vh);
         font-weight: 500;
       }
-      
+
     }
   }
-    .right {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      grid-template-areas:
-        "quantandprice"
-        "actionarea";
-      grid-area: right;
-      
-  
-      .quantityandprice {
-        grid-area: quantandprice;
-        align-items: center;
-        justify-content: space-between;
+
+  .right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "quantandprice"
+      "actionarea";
+    grid-area: right;
+
+
+    .quantityandprice {
+      grid-area: quantandprice;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 1rem;
+      display: flex;
+      flex: auto;
+      flex-direction: row;
+
+      .valueArea {
         gap: 0.5rem;
-        padding: 1rem;  
         display: flex;
-        flex: auto;
         flex-direction: row;
-        
-        .valueArea {
-          gap: 0.5rem;
-          display: flex;
-          flex-direction: row;
-          
-          .svg {
-            width: calc(1.5rem + 0.5vh);
-            color: #6d6d6d;
-          }
-    
-          .value {
-            font-size: calc(1rem + 0.5vh);
-            font-weight: 600;
-            color: #434040;
-          }
+
+        .svg {
+          width: calc(1.5rem + 0.5vh);
+          color: #6d6d6d;
         }
-      }
-  
-      
-  
-      .description {
-        padding: 1rem;
-        background-color: beige;
-        grid-area: description;
-        font-size: calc(0.7rem + 0.5vh);
-      }
-  
-      .actionArea {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        grid-template-areas:
-          "details redeem";
-        grid-area: actionarea;
-        gap: 1rem;
-        padding: 0.5rem;
-  
-        .button {
-          border: none;
-          color: #fff;
-          align-items: center;
-          justify-content: center;
-          padding: 1rem;
-          cursor: pointer;
-          width: 100%;
-          font-size: calc(0.8rem + 0.5vh);
-          border-radius: 1rem;
-          box-shadow:
-            3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
-            4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
-            5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
-            7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
-            9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
-            14px 21px 41px rgba(0, 0, 0, 0.07)
-          ;
-        }
-  
-        .redeemButton {
-          grid-area: redeem;
-          @extend .button;
-          background-color: #4166eb;
-        }
-  
-        .disabledButton {
-          @extend .button;
-          border: 1px solid #b3b2b2;
-          background-color: transparent;
-          color: #b3b2b2;
-          cursor: unset;
-        }
-  
-        .detailsButton {
-          grid-area: details;
-          @extend .button;
-          background-color: #5a5959;
+
+        .value {
+          font-size: calc(1rem + 0.5vh);
+          font-weight: 600;
+          color: #434040;
         }
       }
     }
+
+
+
+    .description {
+      padding: 1rem;
+      background-color: beige;
+      grid-area: description;
+      font-size: calc(0.7rem + 0.5vh);
+    }
+
+    .actionArea {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+        "details redeem";
+      grid-area: actionarea;
+      gap: 1rem;
+      padding: 0.5rem;
+
+      .button {
+        border: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 1rem;
+        cursor: pointer;
+        width: 100%;
+        font-size: calc(0.8rem + 0.5vh);
+        border-radius: 1rem;
+        box-shadow:
+          3.7px 5.5px 4.3px rgba(0, 0, 0, 0.02),
+          4.9px 7.3px 8.2px rgba(0, 0, 0, 0.028),
+          5.9px 8.9px 11.8px rgba(0, 0, 0, 0.035),
+          7.1px 10.7px 15.3px rgba(0, 0, 0, 0.042),
+          9px 13.5px 20.5px rgba(0, 0, 0, 0.05),
+          14px 21px 41px rgba(0, 0, 0, 0.07);
+      }
+
+      .redeemButton {
+        grid-area: redeem;
+        @extend .button;
+        background-color: #4166eb;
+
+        .lockIcon {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      .disabledButton {
+        @extend .button;
+        border: 1px solid #b3b2b2;
+        background-color: transparent;
+        color: #b3b2b2;
+        cursor: unset;
+      }
+
+      .detailsButton {
+        grid-area: details;
+        @extend .button;
+        background-color: #5a5959;
+      }
+    }
+  }
 }
 
 // smaller width tabs
 @media only screen and (min-width: 480px) and (max-width: 990px) {
   .reward {
-    .image {
-    }
+    .image {}
+
     .right {
       .nameArea {
-        .name {
-        }
+        .name {}
       }
     }
   }
@@ -175,18 +183,18 @@
 // for phones
 @media only screen and (max-width: 480px) {
   .reward {
-    .left{
-    .image {
-      max-width: 7rem;
+    .left {
+      .image {
+        max-width: 7rem;
+      }
     }
-  }
 
-  .right{
-    .description{
-      font-size: calc(0.5rem + 0.5vh);
-      padding: 0.5rem;
+    .right {
+      .description {
+        font-size: calc(0.5rem + 0.5vh);
+        padding: 0.5rem;
+      }
     }
-  }
-    
+
   }
 }
