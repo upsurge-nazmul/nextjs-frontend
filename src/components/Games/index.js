@@ -23,11 +23,10 @@ function Games({
   accountType = "",
 }) {
   // modes are different pages like home,kids,store,payments,notifications
-  const { userdata, setuserdata, setGameUnicoinRewards } =
+  const { userdata, setuserdata, setGameUnicoinRewards, setShowSubscription } =
     useContext(MainContext);
   const [mode, setmode] = useState("Games");
   const [recent_games, setrecent_games] = useState(recentgames);
-  const [showSubToPremium, setShowSubToPremium] = useState(false);
   const router = useRouter();
   const [toastdata, settoastdata] = useState({
     show: false,
@@ -125,7 +124,7 @@ function Games({
         setOpenWebglGame(game.id);
       }
     } else {
-      setShowSubToPremium(true);
+      setShowSubscription(true);
     }
   }
 
@@ -142,9 +141,6 @@ function Games({
         />
         <div className={styles.mainContent}>
           {/* <MoneyAceBanner type={accountType === "kid" ? "k" : "p"} /> */}
-          {showSubToPremium && (
-            <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
-          )}
           {/* <div className={styles.availableSection}>
             <h2 className={styles.heading}>
               Recently Played

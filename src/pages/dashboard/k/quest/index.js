@@ -44,7 +44,6 @@ export default function KnowledgeQuest({ userData, questData }) {
     type: "success",
     msg: "",
   });
-  const [showSubToPremium, setShowSubToPremium] = useState(false);
   useEffect(() => {
     setuserdata(userData);
   }, [userData]);
@@ -81,9 +80,6 @@ export default function KnowledgeQuest({ userData, questData }) {
       <Toast data={toastdata} />
       <div className={styles.contentWrapper}>
         <DashboardHeader mode={"Quests"} settoastdata={settoastdata} />
-        {showSubToPremium && (
-          <ChosePremiumPopUp setChoseToPremium={setShowSubToPremium} />
-        )}
         <div className={styles.mainContent} id="quest-main">
           {tab && (
             <>
@@ -103,7 +99,6 @@ export default function KnowledgeQuest({ userData, questData }) {
                 QUEST_TYPES={QUEST_TYPES}
                 tab={tab}
                 userData={userData}
-                setShowSubToPremium={setShowSubToPremium}
               />
             </>
           )}

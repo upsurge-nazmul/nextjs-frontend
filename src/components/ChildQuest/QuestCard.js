@@ -2,6 +2,8 @@ import styles from "../../styles/knowledgeQuest/QuestCard.module.scss";
 import Image from "next/image";
 import LockSvg from "../SVGcomponents/LockSvg";
 import UniCoinSvg from "../SVGcomponents/UniCoinSvg";
+import { useContext } from "react";
+import { MainContext } from "../../context/Main";
 
 const BG_COLORS = [
   "#cbc7ea",
@@ -51,13 +53,8 @@ const TEXT_COLORS = [
   "#333",
 ];
 
-function QuestCard({
-  data,
-  typeProps,
-  handleCardClick,
-  userPlanType,
-  setShowSubToPremium,
-}) {
+function QuestCard({ data, typeProps, handleCardClick, userPlanType }) {
+  const { setShowSubscription } = useContext(MainContext);
   return (
     <>
       {data ? (
@@ -68,7 +65,7 @@ function QuestCard({
             if (userPlanType >= data.premium_plan) {
               handleCardClick(data.questId);
             } else {
-              setShowSubToPremium(true);
+              setShowSubscription(true);
               console.log("Buy a premium plan");
             }
           }}

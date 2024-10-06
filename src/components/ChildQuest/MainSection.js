@@ -9,7 +9,6 @@ export default function MainSection({
   handleCardClick,
   QUEST_TYPES,
   userData,
-  setShowSubToPremium,
 }) {
   const [newData, setNewData] = useState("");
   const [checkData, setCheckData] = useState(true);
@@ -23,7 +22,7 @@ export default function MainSection({
           return null;
         }
       })
-      );
+    );
   }, [tab]);
   function areAllElementsNull(array) {
     for (let i = 0; i < array.length; i++) {
@@ -33,18 +32,16 @@ export default function MainSection({
     }
     return false;
   }
-  useEffect(()=>{
+  useEffect(() => {
     setCheckData(areAllElementsNull(newData));
-  },[newData]);
+  }, [newData]);
   return (
     <div className={styles.mainSection}>
       <div className={styles.questArea}>
         {data &&
           data.length &&
           data.map((item) => {
-            if (
-              tab.title === item.quest_type
-              ) {
+            if (tab.title === item.quest_type) {
               return (
                 <QuestCard
                   handleCardClick={handleCardClick}
@@ -54,19 +51,21 @@ export default function MainSection({
                   )}
                   key={item.questNo}
                   userPlanType={userPlanType}
-                  setShowSubToPremium={setShowSubToPremium}
                 />
               );
             }
           })}
       </div>
-        {!checkData &&
+      {!checkData && (
         <div className={styles.comingSoon}>
           <video autoPlay loop muted playsInline className={styles.video}>
-            <source src={assetsCdn('static/coming_soon.mp4')} type="video/mp4" />
+            <source
+              src={assetsCdn("static/coming_soon.mp4")}
+              type="video/mp4"
+            />
           </video>
         </div>
-        }
+      )}
     </div>
   );
 }
