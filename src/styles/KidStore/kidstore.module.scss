@@ -2,16 +2,19 @@
   background-color: #f4f5f7;
   display: flex;
   overflow: hidden;
+
   .contentWrapper {
     height: 100vh;
     display: flex;
     width: 100%;
     flex-direction: column;
-    .subheader{
+
+    .subheader {
       font-size: large;
       font-weight: bold;
       margin-bottom: 20px;
     }
+
     .mainContent {
       width: 100%;
       display: flex;
@@ -20,13 +23,16 @@
       overflow-x: hidden;
       scrollbar-width: thin;
       padding: 10px 50px;
+
       .redeem {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
       }
+
       .avatars {
         display: flex;
         margin-bottom: 40px;
       }
+
       .vouchers {
         display: flex;
       }
@@ -40,11 +46,13 @@
     background-color: #f4f5f7;
     display: flex;
     overflow: hidden;
+
     .contentWrapper {
       height: 100vh;
       display: flex;
       width: 100%;
       flex-direction: column;
+
       .mainContent {
         width: 100%;
         display: flex;
@@ -52,13 +60,16 @@
         overflow-y: auto;
         scrollbar-width: thin;
         padding: 0 20px;
+
         .redeem {
           margin-bottom: 20px;
         }
+
         .avatars {
           display: flex;
           margin-bottom: 20px;
         }
+
         .vouchers {
           display: flex;
         }
@@ -68,8 +79,7 @@
 }
 
 // smaller tabs landscape mode
-@media only screen and (orientation: landscape) and (max-height: 820px) {
-}
+@media only screen and (orientation: landscape) and (max-height: 820px) {}
 
 // for phones
 @media only screen and (max-width: 480px) {
@@ -77,11 +87,13 @@
     background-color: #f4f5f7;
     display: flex;
     overflow: hidden;
+
     .contentWrapper {
       height: 100vh;
       display: flex;
       width: 100%;
       flex-direction: column;
+
       .mainContent {
         width: 100%;
         display: flex;
@@ -89,13 +101,16 @@
         overflow-y: auto;
         scrollbar-width: thin;
         padding: 0 20px;
+
         .redeem {
           margin-bottom: 20px;
         }
+
         .avatars {
           display: flex;
           margin-bottom: 20px;
         }
+
         .vouchers {
           display: flex;
         }
@@ -105,5 +120,4 @@
 }
 
 // for phones landscape
-@media only screen and (orientation: landscape) and (max-height: 480px) {
-}
+@media only screen and (orientation: landscape) and (max-height: 480px) {}

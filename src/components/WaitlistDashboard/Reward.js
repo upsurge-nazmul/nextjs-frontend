@@ -21,7 +21,8 @@ export default function Reward({
   parent,
   userdatafromserver,
 }) {
-  const { userdata, setuserdata } = useContext(MainContext);
+  const { userdata, setuserdata, setShowSubscription } =
+    useContext(MainContext);
   const [prices, setprices] = useState([]);
   const [showOTP, setshowOTP] = useState(false);
   const [selectedprice, setselectedprice] = useState(
@@ -33,11 +34,15 @@ export default function Reward({
   const [phoneverified, setphoneverified] = useState(false);
 
   async function redeem() {
-    if (quantity < 1) {
-      alert("Please select a quantity to redeem");
-      return;
+    if (userdata && userdata.premium_plan) {
+      if (quantity < 1) {
+        alert("Please select a quantity to redeem");
+        return;
+      }
+      setshowpopup(true);
+    } else {
+      setShowSubscription(true);
     }
-    setshowpopup(true);
   }
 
   useEffect(() => {

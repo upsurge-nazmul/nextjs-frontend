@@ -51,7 +51,6 @@ function DashboardHeader({
   const [showlevels, setshowlevels] = useState(false);
   const [savedUser, setSavedUser] = useState();
   const [showOnboarding, setShowOnboarding] = useState(false);
-  const [showSubscription, setShowSubscription] = useState(false);
   const [openUnicoinHistory, setOpenUnicoinHistory] = useState(false);
   const [updateUnicoinsAnimation, setUpdateUnicoinsAnimation] = useState(false);
   const {
@@ -68,6 +67,8 @@ function DashboardHeader({
     setUnicoinsEarnedPopUp,
     unicoinsEarnedPopUp,
     savedUsers,
+    showSubscription,
+    setShowSubscription,
   } = useContext(MainContext);
   const [displayingUnicoins, setDisplayingUnicoins] = useState(
     userdata?.num_unicoins
@@ -419,8 +420,6 @@ function DashboardHeader({
               setShowOnboarding={setShowOnboarding}
               setshowlevels={setshowlevels}
               kidLevel={kidLevel}
-              showPremiumPopup={showSubscription}
-              setShowPremiumPopup={setShowSubscription}
               setShowLoggedInUsers={setShowLoggedInUsers}
               setShowAvatarModal={setShowAvatarModal}
             />

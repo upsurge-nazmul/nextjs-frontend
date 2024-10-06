@@ -38,6 +38,7 @@ export const MainContextProider = ({ children }) => {
   const [unicoins, setUnicoins] = useState(0);
   const [unicoinsEarnedPopUp, setUnicoinsEarnedPopUp] = useState(false);
   const [gameUnicoinRewards, setGameUnicoinRewards] = useState();
+  const [showSubscription, setShowSubscription] = useState(false);
   const router = useRouter();
   // useEffect(() => {
   //   setTheme(
@@ -207,6 +208,8 @@ export const MainContextProider = ({ children }) => {
         unicoinsEarnedPopUp,
         gameUnicoinRewards,
         setGameUnicoinRewards,
+        showSubscription,
+        setShowSubscription,
       }}
     >
       {children}

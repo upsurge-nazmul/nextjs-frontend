@@ -46,7 +46,7 @@ export default function KidStore({
     name: "",
     price: "",
   });
-  const [openAvatars, setOpenAvatars] = useState(true);
+  const [openAvatars, setOpenAvatars] = useState(false);
 
   useEffect(() => {
     setuserdata(userdatafromserver);
@@ -76,13 +76,12 @@ export default function KidStore({
         availableUnicoins={userdatafromserver?.num_unicoins || 0}
       /> */}
       <div className={styles.contentWrapper}>
-      <DashboardHeader
+        <DashboardHeader
           mode={mode}
           setmode={setmode}
           settoastdata={settoastdata}
         />
         <div className={styles.mainContent}>
-          
           <div className={styles.redeem}>
             <RedeemSection />
           </div>
@@ -101,7 +100,7 @@ export default function KidStore({
               availableUnicoins={userdatafromserver?.num_unicoins || 0}
             />
           )}
-          
+
           <div className={styles.vouchers}>
             <VoucherSection
               vouchers={vouchers}

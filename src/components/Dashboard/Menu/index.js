@@ -20,13 +20,18 @@ export default function Menu({
   setShowOnboarding,
   kidLevel,
   setshowlevels,
-  setShowPremiumPopup,
   setShowLoggedInUsers,
   setShowAvatarModal,
 }) {
   const router = useRouter();
-  const { setSavedUsers, userdata, setshowmenu, setuser, setuserdata } =
-    useContext(MainContext);
+  const {
+    setSavedUsers,
+    userdata,
+    setshowmenu,
+    setuser,
+    setuserdata,
+    setShowSubscription,
+  } = useContext(MainContext);
 
   async function handleLogout() {
     let res = await LoginApis.logout();
@@ -195,7 +200,7 @@ export default function Menu({
             className={styles.menuItem}
             onClick={() => {
               setshowmenu(false);
-              setShowPremiumPopup((prev) => !prev);
+              setShowSubscription((prev) => !prev);
             }}
           >
             <PaymentIcon />
