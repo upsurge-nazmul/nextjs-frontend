@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/External/style.module.scss";
+import Link from "next/link";
 
 function ExternalLanding() {
   const router = useRouter();
@@ -39,9 +40,9 @@ function ExternalLanding() {
           <div className={styles.mainText}>
             This page is for Android users only
           </div>
-          <a href="/">
-            <button className={styles.redirectButton}>Go to homepage</button>
-          </a>
+          <Link href="/" className={styles.redirectButton}>
+            Go to homepage
+          </Link>
         </div>
       ) : (
         <div className={styles.mainContent}>
@@ -52,7 +53,7 @@ function ExternalLanding() {
           {showDownloadButton && (
             <div className={styles.downloadButtonArea}>
               <p className={styles.downloadButtonText}>
-                If the app doesn't open, you can download it here:
+                {`If the app doesn't open, you can download it here:`}
               </p>
               <a
                 href="https://play.google.com/store/apps/details?id=com.upsurgefi.app"
