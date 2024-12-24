@@ -16,30 +16,30 @@ const data = [
     title: "Kickstart your financial journey",
     description:
       "Financial literacy is a life-skill and the earlier you start, the easier it will be to achieve your financial goals. Through our games, courses and workshops, all designed by experts, you will understand money, saving, investing and entrepreneurship like never before!",
-    img: assetsVideo('images/benefit1 (1).png'),
+    img: "https://storage.googleapis.com/upsurge-assets-cdn/images/benefits/benefit1.png",
   },
   {
     title: "Learning by doing",
     description:
       "We believe that learning is most effective when it’s through play! Our games, activities and quizzes will instill healthy money habits that will last a lifetime.",
-    img: assetsVideo('images/benefit2 (1).png'),
+    img: "https://storage.googleapis.com/upsurge-assets-cdn/images/benefits/benefit2.png",
   },
   {
     title: "Develop an entrepreneurial mindset.",
     description:
       "Develop the necessary skills and knowledge to understand and evaluate the fundamentals of business and starting-up, and (hopefully) be the next unicorn founder.",
-    img: "https://imgcdn.upsurge.in/images/benefit3.png",
+    img: "https://storage.googleapis.com/upsurge-assets-cdn/images/benefits/benefit3.png",
   },
   {
     title: "Earn real rewards",
     description:
       "As adults, when we do any job well, we get rewarded. Then why should it be any different for students? You get rewarded with Unicoins for jobs well done, which can be redeemed for books, games, vouchers and educational courses from your favorite brands.",
-    img: "https://imgcdn.upsurge.in/images/Maskz-Group.png",
+    img: "https://storage.googleapis.com/upsurge-assets-cdn/images/benefits/benefit4.png",
   },
   {
     title: "Develop 21st century skills & knowledge",
     description: `While jobs & roles change, the skills needed to succeed remain the same. Our games help you gain confidence & excel by developing your critical thinking and problem-solving skills.`,
-    img: "https://imgcdn.upsurge.in/images/benefit4.png",
+    img: "https://storage.googleapis.com/upsurge-assets-cdn/images/benefits/benefit5.png",
   },
 ];
 
