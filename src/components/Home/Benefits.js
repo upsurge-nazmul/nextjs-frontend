@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import StarSvg from "../SVGcomponents/StarSvg";
 import BlubSvg from "../SVGcomponents/BulbSvg";
-import Image from "next/image";
 import { MainContext } from "../../context/Main";
 import { assetsVideo } from "../../utils/utils";
 
@@ -172,7 +171,7 @@ function Benefits() {
                 <div className={styles.lb3}></div>
                 <div className={styles.lb4}></div>
                 <div className={styles.wrap}>
-                  <Image
+                  <img
                     src={data[index].img}
                     alt=""
                     layout="fill"
@@ -273,7 +272,7 @@ function Benefits() {
             {
               <>
                 <div className={styles.wrap}>
-                  <Image
+                  <img
                     id="img-1"
                     className="imgsections"
                     src={data[0].img}
@@ -302,7 +301,7 @@ function Benefits() {
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>
-              <Image
+              <img
                 id="img-2"
                 className="imgsections"
                 src={data[1].img}
@@ -326,7 +325,7 @@ function Benefits() {
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>
-              <Image
+              <img
                 id="img-3"
                 className="imgsections"
                 src={data[2].img}
@@ -351,7 +350,7 @@ function Benefits() {
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>
-              <Image
+              <img
                 id="img-4"
                 className="imgsections"
                 src={data[3].img}
@@ -377,7 +376,7 @@ function Benefits() {
           </div>
           <div className={styles.imgwrapper}>
             <div className={styles.wrap}>
-              <Image
+              <img
                 id="img-5"
                 className="imgsections"
                 src={data[4].img}

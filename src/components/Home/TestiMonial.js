@@ -203,8 +203,14 @@ export default function TestiMonial() {
             <div className={styles.right}>
               <div className={styles.profileContainer}>
                 <div className={styles.image}>
-                  <Image
+                  <img
                     src={testimonials[currenttestimonial].img}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                    }}
                     alt=""
                     layout="fill"
                     objectFit="cover"
