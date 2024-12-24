@@ -4,22 +4,26 @@
   0% {
     transform: translateY(-20%) scaleX(-1);
   }
+
   100% {
     transform: translateY(0) scaleX(-1);
   }
 }
+
 .gamelist {
-  height: 100vh;
-  position: relative;
+  // height: 100vh;
+  // position: relative;
 
   input[type="range"] {
     -webkit-appearance: none;
     margin: 10px 0;
     width: 100%;
   }
+
   input[type="range"]:focus {
     outline: none;
   }
+
   input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 2px;
@@ -30,6 +34,7 @@
     border-radius: 50px;
     border: 0px solid #000000;
   }
+
   input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0px 0px 1px #ffffff;
     border: 0px solid #000000;
@@ -41,9 +46,11 @@
     -webkit-appearance: none;
     margin-top: -7px;
   }
+
   input[type="range"]:focus::-webkit-slider-runnable-track {
     background: #4166eb;
   }
+
   input[type="range"]::-moz-range-track {
     width: 100%;
     height: 2px;
@@ -54,6 +61,7 @@
     border-radius: 50px;
     border: 0px solid #000000;
   }
+
   input[type="range"]::-moz-range-thumb {
     box-shadow: 0px 0px 1px #ffffff;
     border: 0px solid #000000;
@@ -63,6 +71,7 @@
     background: #4166eb;
     cursor: pointer;
   }
+
   input[type="range"]::-ms-track {
     width: 100%;
     height: 2px;
@@ -72,18 +81,21 @@
     border-color: transparent;
     color: transparent;
   }
+
   input[type="range"]::-ms-fill-lower {
     background: #4166eb;
     border: 0px solid #000000;
     border-radius: 100px;
     box-shadow: 0px 0px 0px #000000;
   }
+
   input[type="range"]::-ms-fill-upper {
     background: #4166eb;
     border: 0px solid #000000;
     border-radius: 100px;
     box-shadow: 0px 0px 0px #000000;
   }
+
   input[type="range"]::-ms-thumb {
     box-shadow: 0px 0px 1px #ffffff;
     border: 0px solid #000000;
@@ -93,9 +105,11 @@
     background: #4166eb;
     cursor: pointer;
   }
+
   input[type="range"]:focus::-ms-fill-lower {
     background: #4166eb;
   }
+
   input[type="range"]:focus::-ms-fill-upper {
     background: #4166eb;
   }
@@ -106,21 +120,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .moreGames {
       font-size: 2rem;
       margin: 2rem;
     }
+
     .icon {
       width: 145px;
       height: 145px;
       border-radius: 145px;
       object-fit: cover;
     }
+
     .headingSection {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .heading {
         margin-top: 2rem;
         font-weight: 700;
@@ -128,6 +146,7 @@
         color: #000000;
         text-align: center;
       }
+
       .subheading {
         margin-top: 1vh;
         font-weight: 400;
@@ -139,18 +158,22 @@
         width: 60%;
       }
     }
+
     .gamelistwrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       width: 100%;
+
       .gameHeading {
         display: none;
         text-align: start;
         width: 100%;
       }
-      .wrapper {//TBD
+
+      .wrapper {
+        //TBD
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
         row-gap: 3rem;
@@ -159,6 +182,7 @@
         align-content: space-evenly;
         justify-content: space-around;
         align-items: center;
+
         .gameCardContainer {
           flex: 0 0 calc(25.66% - 3rem);
           min-width: 20rem;
@@ -166,6 +190,7 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+
           .gameCard {
             position: relative;
             width: 80%;
@@ -173,18 +198,22 @@
             border-radius: 16px;
             box-shadow: #4166eb22 0px 2px 8px 0px;
             overflow: hidden;
+
             img {
               width: 100%;
               object-fit: cover;
               object-position: center;
             }
+
             .contentWrapper {
               padding: 0.6rem;
+
               .title {
                 font-size: 1.3em;
                 font-weight: 600;
                 text-align: center;
               }
+
               .detail {
                 color: #18191fd1;
                 font-size: 1em;
@@ -193,12 +222,14 @@
               }
             }
           }
+
           .actionArea {
             width: 80%;
             min-width: 8rem;
             box-shadow: #4166eb22 0px 2px 8px 0px;
             margin: 1rem 0;
             border-radius: 10px;
+
             .icon {
               width: 2rem;
               height: fit-content;
@@ -212,17 +243,19 @@
 
 @media only screen and (min-width: 992px) {
   .gamelist {
-    height: 100vh;
-    position: relative;
+    // height: 100vh;
+    // position: relative;
 
     input[type="range"] {
       -webkit-appearance: none;
       margin: 10px 0;
       width: 100%;
     }
+
     input[type="range"]:focus {
       outline: none;
     }
+
     input[type="range"]::-webkit-slider-runnable-track {
       width: 100%;
       height: 2px;
@@ -233,6 +266,7 @@
       border-radius: 50px;
       border: 0px solid #000000;
     }
+
     input[type="range"]::-webkit-slider-thumb {
       box-shadow: 0px 0px 1px #ffffff;
       border: 0px solid #000000;
@@ -244,9 +278,11 @@
       -webkit-appearance: none;
       margin-top: -7px;
     }
+
     input[type="range"]:focus::-webkit-slider-runnable-track {
       background: #4166eb;
     }
+
     input[type="range"]::-moz-range-track {
       width: 100%;
       height: 2px;
@@ -257,6 +293,7 @@
       border-radius: 50px;
       border: 0px solid #000000;
     }
+
     input[type="range"]::-moz-range-thumb {
       box-shadow: 0px 0px 1px #ffffff;
       border: 0px solid #000000;
@@ -266,6 +303,7 @@
       background: #4166eb;
       cursor: pointer;
     }
+
     input[type="range"]::-ms-track {
       width: 100%;
       height: 2px;
@@ -275,18 +313,21 @@
       border-color: transparent;
       color: transparent;
     }
+
     input[type="range"]::-ms-fill-lower {
       background: #4166eb;
       border: 0px solid #000000;
       border-radius: 100px;
       box-shadow: 0px 0px 0px #000000;
     }
+
     input[type="range"]::-ms-fill-upper {
       background: #4166eb;
       border: 0px solid #000000;
       border-radius: 100px;
       box-shadow: 0px 0px 0px #000000;
     }
+
     input[type="range"]::-ms-thumb {
       box-shadow: 0px 0px 1px #ffffff;
       border: 0px solid #000000;
@@ -296,9 +337,11 @@
       background: #4166eb;
       cursor: pointer;
     }
+
     input[type="range"]:focus::-ms-fill-lower {
       background: #4166eb;
     }
+
     input[type="range"]:focus::-ms-fill-upper {
       background: #4166eb;
     }
@@ -309,21 +352,25 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .moreGames {
         font-size: 2rem;
         margin: 2rem;
       }
+
       .icon {
         width: 145px;
         height: 145px;
         border-radius: 145px;
         object-fit: cover;
       }
+
       .headingSection {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+
         .heading {
           margin-top: 2rem;
           font-weight: 700;
@@ -331,6 +378,7 @@
           color: #000000;
           text-align: center;
         }
+
         .subheading {
           margin-top: 1vh;
           font-weight: 400;
@@ -342,6 +390,7 @@
           width: 60%;
         }
       }
+
       .gamelistwrapper {
         display: flex;
         flex-direction: column;
@@ -349,14 +398,17 @@
         align-items: center;
         row-gap: 1rem;
         width: 100%;
+
         .gameHeading {
           display: none;
           text-align: start;
           width: 100%;
         }
+
         .wrapper {
           .gameCardContainer {
             flex: 0 0 calc(25.66% - 3rem);
+
             .gameCard {
               position: relative;
               width: 80%;
@@ -364,19 +416,23 @@
               border-radius: 16px;
               box-shadow: #4166eb22 0px 2px 8px 0px;
               overflow: hidden;
+
               img {
-                
+
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
               }
+
               .contentWrapper {
                 padding: 0.6rem;
+
                 .title {
                   font-size: 1.3em;
                   font-weight: 600;
                   text-align: center;
                 }
+
                 .detail {
                   color: #18191fd1;
                   font-size: 1em;
@@ -385,11 +441,13 @@
                 }
               }
             }
+
             .actionArea {
               width: 80%;
               box-shadow: #4166eb22 0px 2px 8px 0px;
               margin: 1rem 0;
               border-radius: 10px;
+
               .icon {
                 width: 2rem;
                 height: fit-content;
@@ -415,24 +473,29 @@
 @media only screen and (orientation: portrait) and (max-width: 500px) {
   .gamelist {
     height: 100%;
+
     .contentWrapper {
       margin-top: 0px;
       padding-left: 1rem;
       padding-right: 1rem;
       padding-top: 15px;
+
       .pathSection {
         .path {
           font-size: 0.75rem;
         }
       }
+
       .headingSection {
         margin-top: 1rem;
+
         .heading {
           font-weight: 700;
           font-size: 1.4em;
           margin-bottom: 10px;
           width: 100%;
         }
+
         .subheading {
           margin-top: 0;
           font-weight: 400;
@@ -440,12 +503,14 @@
           width: 100%;
         }
       }
+
       .gamelistwrapper {
         .gameHeading {
           display: block;
           text-align: start;
           width: 100%;
         }
+
         .wrapper {
           .gameCardContainer {
             flex: 1 0 calc(60% - 3rem) !important;
@@ -454,11 +519,13 @@
             flex-direction: column;
             justify-content: space-between;
             min-width: 10rem;
+
             .gameCard {
               width: 100% !important;
               height: 100% !important;
-              
+
             }
+
             .actionArea {
               width: 100% !important;
               margin-top: 0.6rem;
@@ -473,11 +540,13 @@
 @media only screen and (width: 768px) {
   .gamelist {
     height: 100%;
+
     .contentWrapper {
       margin-top: 0px;
       padding-left: 1rem;
       padding-right: 1rem;
       padding-top: 15px;
+
       .pathSection {
         .path {
           font-size: 0.75rem;
@@ -486,12 +555,14 @@
 
       .headingSection {
         margin-top: 20px;
+
         .heading {
           font-weight: 700;
           font-size: 1.6em;
           margin-bottom: 10px;
           width: 100%;
         }
+
         .subheading {
           margin-top: 0;
           font-weight: 400;
@@ -499,6 +570,7 @@
           width: 80%;
         }
       }
+
       .wrapper {
         .gameCardContainer {
           flex: 0 0 calc(45% - 3rem) !important;
@@ -507,14 +579,16 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+
           .gameCard {
             width: 100% !important;
             height: 100% !important;
-            
+
             .detail {
               margin-bottom: auto !important;
             }
           }
+
           .actionArea {
             width: 100% !important;
           }

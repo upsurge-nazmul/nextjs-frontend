@@ -32,6 +32,7 @@ import UnicoinsAwards from "../UnicoinsAwards";
 import GameView from "../Games/GameView";
 import WebglView from "../WebglView";
 import RecognizedBy from "./RecognizedBy";
+import AdSenseAd from "../Adsense";
 // import { IntercomProvider, useIntercom } from "react-use-intercom";
 
 function Home({ page = "", showNav = true, blog_data }) {
@@ -294,6 +295,7 @@ function Home({ page = "", showNav = true, blog_data }) {
         />
       )}
       <HighlightsCounter setshowauth={setshowauth} setauthmode={setauthmode} />
+      <AdSenseAd />
       <RecognizedBy />
       <Benefits />
       <Who />

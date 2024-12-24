@@ -16,6 +16,7 @@ import { MainContext } from "../../context/Main";
 import Spinner from "../Spinner";
 import LoginApis from "../../actions/apis/LoginApis";
 import validator from "validator";
+import AdSenseAd from "../Adsense";
 function Footer({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
   const [showterm, setshowterm] = useState(false);
   const [showresources, setshowresources] = useState(false);
@@ -732,6 +733,7 @@ function Footer({ setshowauth, setauthmode, setmailfromhome, setshowpopup }) {
       <div className={styles.bottombar}>
         © Surgeup Technologies Private Limited. {new Date().getFullYear()}
       </div>
+      <AdSenseAd />
     </div>
   );
 }
