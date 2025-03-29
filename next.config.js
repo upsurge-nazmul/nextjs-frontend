@@ -24,12 +24,8 @@ module.exports = {
   },
   swcMinify: true,
   env: {
-    NEXT_PUBLIC_LIVE_SERVER: isProd
-      ? "https://upsurgefi.com/"
-      : process.env.NEXT_PUBLIC_LIVE_SERVER,
-    NEXT_PUBLIC_TEST_SERVER: isProd
-      ? "https://upsurgefi.com/"
-      : process.env.NEXT_PUBLIC_TEST_SERVER,
+    NEXT_PUBLIC_LIVE_SERVER: process.env.NEXT_PUBLIC_LIVE_SERVER,
+    NEXT_PUBLIC_TEST_SERVER: process.env.NEXT_PUBLIC_TEST_SERVER,
     NEXT_PUBLIC_MEDIA_BUCKET: "https://storage.googleapis.com",
     NEXT_PUBLIC_GAME_BUCKET: "https://storage.googleapis.com",
     NEXT_PUBLIC_UNICOIN_VALUE: 1000,
